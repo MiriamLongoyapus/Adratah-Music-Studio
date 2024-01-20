@@ -13,13 +13,13 @@ const Products: any = [
     price: 6000,
     availability: "In Stock",
   },
-  {
-    name: "Dairy Pasteurizer",
-    image: "/Images/Dairy3.png",
-    rating: 4.5,
-    price: 5000,
-    availability: "In Stock",
-  },
+  // {
+  //   name: "Dairy Pasteurizer",
+  //   image: "/Images/Dairy3.png",
+  //   rating: 4.5,
+  //   price: 5000,
+  //   availability: "In Stock",
+  // },
   // {
   //   name: "Milk Cooling Syste",
   //   image: "/Images/Dairy4.png",
