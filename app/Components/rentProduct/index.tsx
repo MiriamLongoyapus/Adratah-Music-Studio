@@ -14,7 +14,7 @@ import "pure-react-carousel/dist/react-carousel.es.css";
 import { HiShoppingCart } from "react-icons/hi";
 import Button from "../Atoms/button";
 import Home from "../../Data/data";
-import { useCart } from "@/app/stores/cart-store";
+import { useCart } from "@/stores/cart-store";
 
 const hirePurchaseCheckboxOptions = ["monthly", "quartely", "annually", "semi"];
 const rentCheckboxOptions = ["One Day", "Weekly"];
@@ -63,7 +63,7 @@ const RentProduct = ({id}:{id:string}) => {
   };
 
   return (
-    <div className="grid lg:grid-cols-10 gap-4 min-h-[90vh] md:gap-x-8 ">
+    <div className="grid lg:grid-cols-10 gap-4 min-h-[90vh] md:gap-x-8 bg-white text-black">
       <div className="md:col-span-4 ">
       <div className="flex flex-col justify-between h-full">
       <div className="w-full flex flex-col items-center justify-end min-h-[500px]">
@@ -75,7 +75,7 @@ const RentProduct = ({id}:{id:string}) => {
           />
         </div>
       </div>
-      <CarouselProvider
+      {/* <CarouselProvider
         naturalSlideWidth={100}
         naturalSlideHeight={125}
         totalSlides={5}
@@ -116,7 +116,7 @@ const RentProduct = ({id}:{id:string}) => {
             </Slide>
           </Slider>
         </div>
-      </CarouselProvider>
+      </CarouselProvider> */}
     </div>
       </div>
       <div className="md:col-span-6">
@@ -223,7 +223,7 @@ const RentProduct = ({id}:{id:string}) => {
         </form>
       )}
 
-      <button className="text-[16px] md:text-[24px] lg:text-[32px] flex items-center gap-x-2 bg-white hover:bg-grey disabled:bg-grey disabled:cursor-not-allowed transition-all mt-5 md:mt-10 text-black rounded-full px-8 lg:px-10 py-2 lg:py-3"
+      <button className="text-[16px] md:text-[24px] lg:text-[32px] flex items-center gap-x-2 bg-[#005f69] hover:bg-grey disabled:bg-grey disabled:cursor-not-allowed transition-all mt-5 md:mt-10 text-black rounded-full px-8 lg:px-10 py-2 lg:py-3"
       onClick={() => selectedProduct && addToCart({...selectedProduct, quantity: 1})}
       disabled = {isInCart}
       >

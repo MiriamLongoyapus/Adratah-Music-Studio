@@ -1,6 +1,6 @@
 "use client";
-// import { useCart } from "@/stores/cart-store";
-import { useCart } from "../stores/cart-store";
+import { useCart } from "@/stores/cart-store";
+// import { useCart } from "../stores/cart-store";
 import Link from "next/link";
 
 const CartItems = () => {
