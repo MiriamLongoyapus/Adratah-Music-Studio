@@ -81,47 +81,88 @@
 // };
 
 // export default LandingPage;
-"use client"
+
+// "use client"
+// import React, { useState, useEffect } from "react";
+
+// const LandingPage = () => {
+//   const [currentImage, setCurrentImage] = useState("img1.jpeg");
+
+//   const images = ["aa.jpg", "bb.jpg", "jj.jpg", ]; 
+
+//   useEffect(() => {
+//     const intervalId = setInterval(() => {
+//       const nextImageIndex = (images.indexOf(currentImage) + 1) % images.length;
+//       setCurrentImage(images[nextImageIndex]);
+//     }, 3000); // Change image every 5 seconds
+
+//     return () => clearInterval(intervalId);
+//   }, [currentImage, images]);
+
+//   return (
+//     <div
+//       className="bg-gradient-to-b from-green-300 to-green-300 h-screen flex flex-col justify-center items-center"
+//       style={{
+//         backgroundImage: `url('/images/${currentImage}')`,
+//         backgroundSize: "cover",
+//         backgroundRepeat: "no-repeat",
+//         backgroundPosition: "center",
+//         height: "100vh", 
+
+//       }}
+//     >
+//         {/* <h1 className="text-yellow-500 text-6xl mb-8">EQUIP FARM</h1> */}
+//      <h3 className="text-black text-4xl text-center mr-80 font-extrabold">
+//        Welcome To Adratah Music Studio
+//        <br />
+//        Your Top Musical Studio Shop
+//      </h3>
+//      {/* <a href="/shop">
+//        <button className="bg-yellow-500 text-black text-xl font-bold px-8 py-4 mt-8 rounded-full transition-colors duration-300 hover:bg-green-500">
+//          Shop
+//        </button>
+//      </a> */}
+//       {/* ... rest of your JSX ... */}
+//     </div>
+//   );
+// };
+
+// export default LandingPage;
+
+"use client";
 import React, { useState, useEffect } from "react";
 
 const LandingPage = () => {
-  const [currentImage, setCurrentImage] = useState("img1.jpeg");
+  const [currentImage, setCurrentImage] = useState("bg1.jpg");
 
-  const images = ["aa.jpg", "bb.jpg", "jj.jpg", ]; 
+  const images = ["bg1.jpg", "bg2.jpg", "aa.jpg", "bb.jpg"];
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       const nextImageIndex = (images.indexOf(currentImage) + 1) % images.length;
       setCurrentImage(images[nextImageIndex]);
-    }, 3000); // Change image every 5 seconds
+    }, 3000); 
 
     return () => clearInterval(intervalId);
   }, [currentImage, images]);
 
   return (
     <div
-      className="bg-gradient-to-b from-green-300 to-green-300 h-screen flex flex-col justify-center items-center"
+      className="bg-[#005f69]from-green-300 to-green-300 flex flex-col justify-center items-center"
       style={{
         backgroundImage: `url('/images/${currentImage}')`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        height: "100vh", 
-
+        height: "80vh", 
       }}
     >
-        {/* <h1 className="text-yellow-500 text-6xl mb-8">EQUIP FARM</h1> */}
-     <h3 className="text-black text-4xl text-center mr-80 font-extrabold">
-       Welcome To Adratah Music Studio
-       <br />
-       Your Top Musical Studio Shop
-     </h3>
-     {/* <a href="/shop">
-       <button className="bg-yellow-500 text-black text-xl font-bold px-8 py-4 mt-8 rounded-full transition-colors duration-300 hover:bg-green-500">
-         Shop
-       </button>
-     </a> */}
-      {/* ... rest of your JSX ... */}
+      <h3 className="text-white text-6xl text-center font-extrabold">
+        Welcome To Adratah Music Studio
+        <br />
+        Your Top Musical Studio Shop
+      </h3>
+      <h6 className="mt-10 text-2xl">Your one stop shop</h6>
     </div>
   );
 };

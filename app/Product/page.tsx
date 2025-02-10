@@ -143,7 +143,7 @@ const products: ProductType[] = [
 ];
 
 const Product = ({ product }: { product: ProductType }) => (
-  <div className="bg-white rounded-lg overflow-hidden p-4 max-w-xs shadow-md hover:shadow-lg border border-gray-700 mb-4 mx-2 flex flex-col">
+  <div className="bg-white rounded-lg overflow-hidden p-16 max-w-xs shadow-md hover:shadow-lg border border-gray-500 mb-4 mx-2 flex flex-col">
     <div className="mb-2">
       <img src={product.imageSrc} alt="Product" className="w-full" />
     </div>
@@ -160,8 +160,8 @@ const Product = ({ product }: { product: ProductType }) => (
       >
         {product.availability}
       </p>
-      <div className="flex items-center justify-center mt-2">
-        <button className="bg-yellow-500 text-white font-semibold py-2 px-4 rounded-full ml-2 hover:bg-green-600 transition duration-300">
+      <div className="flex items-center justify-center">
+        <button className="bg-yellow-500 text-white font-semibold py-2 rounded-full ml-2 hover:bg-green-600 transition duration-300">
           <Link href="/Catalog">
             View More
           </Link>

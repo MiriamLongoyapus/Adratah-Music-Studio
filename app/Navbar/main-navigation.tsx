@@ -14,7 +14,7 @@ const MainNavigation = () => {
 
   
   return (
-    <div className="text-black md:px-[64px] pb-4 sticky top-0 bg-white backdrop-blur-lg">
+    <div className="text-black md:px-[64px] pb-4 sticky top-0 bg-white backdrop-blur-lg ">
       <div className="flex items-center justify-between">
         <div className="flex items-center">
           <div>

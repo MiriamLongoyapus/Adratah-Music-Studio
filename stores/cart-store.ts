@@ -1,6 +1,7 @@
 import { create } from 'zustand'
 
 type ProductType =  {
+    description: string;
     id: number;
     name: string;
     image: string;

@@ -1,194 +1,56 @@
 "use client";
-import React, { useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import React, { useState } from "react";
 import Link from "next/link";
-import Products from "../Data/data";
-import Navbar from "../Navbar/page";
-import { useState } from "react";
+import Products from "../Data copy/page";
 
-const HomePage = () => {
-  const [filteredData, setFilteredData] = useState<any>();
+const ProductsPage = () => {
+  const [filteredData, setFilteredData] = useState(Products);
 
   const handleSearch = (query: string) => {
-    const filteredResults: any = Products?.filter((item: any) =>
+    const filteredResults = Products.filter((item: { name: string; }) =>
       item.name.toLowerCase().includes(query.toLowerCase())
     );
     setFilteredData(filteredResults);
   };
 
-  useEffect(() => {
-    setFilteredData(Products);
-  }, []);
-
   return (
-    <>
-      <div
-      
-        className="container mt-20 max-w-8xl mx-auto"
-        style={{ paddingTop: "5%", backgroundColor: "#f2f2f2" }}
-      >
-              <Navbar on={handleSearch} />
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 m-4 mb-8">
-          {filteredData?.map((item: any, index: number) => (
-            <div
-              className="bg-white rounded-lg shadow-md border  w-full"
-              key={index}
-            >
-              <div className="text-center">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="h-48 object-cover rounded-t-lg mx-auto sm:h-36 md:h-24 lg:h-32 xl:h-40"
-                />
-              </div>
-              <div className="p-4">
-                <div className="flex justify-center">
-                  <div className="flex text-yellow-500">
-                    {Array.from({ length: 5 }).map((_, i) => (
-                      <span key={i}>&#9733;</span>
-                    ))}
-                  </div>
-                </div>
-                <h2 className="text-lg font-semibold text-center text-black">
-                  {item.name}
-                </h2>
-                <div className="mt-2 text-lg font-semibold text-center text-black">
-                  {item.price} KES
-                </div>
-                <div className="mt-4 flex justify-center">
-                  <button className="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-green-500">
-                    <Link href={`/products/${item.id}`}>view more</Link>
-                  </button>
-                </div>
-              </div>
+    <div className="bg-[#CFE8E8] min-h-screen flex flex-col items-center py-10">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-16 max-w-7xl mx-auto">
+        {filteredData.map((item: { id: React.Key | null | undefined; image: string | undefined; name: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.PromiseLikeOfReactNode | null | undefined; price: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | React.PromiseLikeOfReactNode | null | undefined; }) => (
+          <div key={item.id} className="bg-white rounded-xl shadow-lg p-6">
+            <div className="flex justify-center w-full">
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-64 h-64 object-contain"
+              />
             </div>
-          ))}
-        </div>
+            <h3 className="text-xl font-bold text-center text-[#300048] mt-4">
+              {item.name}
+            </h3>
+            <div className="mt-4 text-center">
+              <span className="text-lg font-bold text-[#300048]">
+                {item.price} KES
+              </span>
+            </div>
+            <div className="flex justify-between mt-6">
+              <Link href={`/products/${item.id}`}>
+                <button className="text-[#005f69] border border-[#005f69] rounded-full px-4 py-2">
+                  Learn More
+                </button>
+              </Link>
+              <Link href="/cart">
+                <button className="bg-[#005f69] text-white rounded-full px-4 py-2">
+                  Order Now
+                </button>
+              </Link>
+            </div>
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 
-export default HomePage;
+export default ProductsPage;
 
-// "use client"
-// import React, { useState } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faStar } from "@fortawesome/free-solid-svg-icons";
-// import Link from "next/link";
-// import Products from "../Data/data";
-// import Navbar from "../Navbar/page";
-
-// const HomePage = () => {
-//   const [filteredData, setFilteredData] = useState<any>();
-
-//   const handleSearch = (query: string) => {
-//     const filteredResults: any = Products?.filter((item: any) =>
-//       item.name.toLowerCase().includes(query.toLowerCase())
-//     );
-//     setFilteredData(filteredResults);
-//   };
-
-//   return (
-//     <>
-//       <div className="container mt-20 max-w-8xl mx-auto" style={{ paddingTop: "5%", backgroundColor: "#f2f2f2" }}>
-//         <Navbar on={handleSearch} />
-//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 m-4 mb-8">
-//           {filteredData?.map((item: any, index: number) => (
-//             <div className="bg-white rounded-lg shadow-md border w-full relative" key={index}>
-//               <div className="text-center">
-//                 <img src={item.image} alt={item.name} className="h-48 object-cover rounded-t-lg mx-auto sm:h-36 md:h-24 lg:h-32 xl:h-40" />
-//               </div>
-//               <div className="p-4">
-//                 <div className="flex justify-center">
-//                   <div className="flex text-yellow-500">
-//                     {[...Array(5)].map((_, i) => (
-//                       <FontAwesomeIcon icon={faStar} key={i} />
-//                     ))}
-//                   </div>
-//                 </div>
-//                 <h2 className="text-lg font-semibold text-center text-black">{item.name}</h2>
-//                 <div className="mt-2 text-lg font-semibold text-center text-black">{item.price} KES</div>
-//                 <div className="mt-4 flex justify-center">
-//                   <button className="bg-yellow-500 text-white px-4 py-2 rounded-full hover:bg-green-500">
-//                     <Link href={`/products/${item.id}`}>view more</Link>
-//                   </button>
-//                 </div>
-//                 <div className="absolute top-0 left-0 right-0 bg-black bg-opacity-75 text-white p-2 opacity-0 transition-opacity duration-300">
-//                   <p className="text-lg font-semibold text-center">Rating: {item.rating}</p>
-//                   <p className="text-lg font-semibold text-center">Price: {item.price} KES</p>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default HomePage;
-
-
-// 'use client'
-
-// import React, { useEffect, useState } from "react";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faStar } from "@fortawesome/free-solid-svg-icons";
-// import { IconProp } from "@fortawesome/fontawesome-svg-core";
-// import Link from "next/link";
-
-// import Navbar from "../Navbar/page";
-
-// const HomePage = () => {
-//   const [filteredData, setFilteredData] = useState([]);
-//   const [loading, setLoading] = useState(true);
-
-//   const handleSearch = (query) => {
-//     // Your  logic here
-//   };
-
-//   useEffect(() => {
-//     // Fetch data from the backend API
-//     fetch("https://aminata.connvotech.com/api/catalogue/")
-//       .then((response) => response.json())
-//       .then((data) => {
-//         setFilteredData(data); // Assuming your data structure matches the Products data
-//         setLoading(false);
-//       })
-//       .catch((error) => {
-//         console.error("Error fetching data from the backend API:", error);
-//         setLoading(false);
-//       });
-//   }, []);
-
-//   return (
-//     <>
-//       <Navbar onSearch={handleSearch} />
-//       <div
-//         className="container mt-20 max-w-8xl ml-4 md:ml-10"
-//         style={{ paddingTop: "5%" }}
-//       >
-//         {loading ? (
-//           <p>Loading...</p>
-//         ) : (
-//           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-8">
-//             {filteredData.map((item, index) => (
-//               <div
-//                 className="bg-white rounded-lg shadow-md border border-black w-full"
-//                 key={index}
-//               >
-//                 {/* Your item display code */}
-//               </div>
-//             ))}
-//           </div>
-//         )}
-//       </div>
-//     </>
-//   );
-// };
-
-// export default HomePage;
